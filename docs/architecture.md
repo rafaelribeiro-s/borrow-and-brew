@@ -7,12 +7,19 @@ Learn Rust through the progressive building of a realistic coffee shop system.
 ## Structure
 
 Borrow & Brew
-│
+
+|
+
 ├── Customer Service
+
 ├── Sales
+
 ├── Operations
+
 ├── Inventory
+
 ├── Reports
+
 └── Administration
 
 ## Organization
