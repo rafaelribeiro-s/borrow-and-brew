@@ -1,0 +1,4 @@
+[workspace]
+resolver = "2"
+
+members = ["exercise_01_customer_registration"]
