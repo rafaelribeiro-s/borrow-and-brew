@@ -8,7 +8,7 @@ fn main() {
     // ---------------------------------------------------------
     // STEP 01: RAW DATA INPUT
     // ---------------------------------------------------------
-    // Simulates "dirty" inpunts typed quickly by Ana during peak hours.
+    // Simulates "dirty" inputs typed quickly by Ana during peak hours.
     let customer_name = "  mArIa sIlVa  ";
     let customer_cpf = "123.456.789-00";
 
