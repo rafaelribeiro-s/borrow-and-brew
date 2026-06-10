@@ -15,4 +15,4 @@ Shadowing.
 
 ## Current State
 
-Implemented version: V1
+Implemented version: V2
