@@ -72,7 +72,7 @@ Use the following operations in sequence:
 
 ## Mandatory Steps
 
-Create the file `src/bin/exercicio_1_v5_cadastro.rs` and follow this implementation order:
+To solve this problem, you must follow this implementation order in your `main.rs` file:
 
 ### Step 1:
 
@@ -247,58 +247,3 @@ The final output should clearly illustrate that behaviors are now encapsulated i
 ## Learning Goals
 
 The objectives of Exercise 01 — Version 5.0 focus on transforming entities from passive data holders into active participants of the business domain.
-
-They are divided into four main pillars:
-
-### 1. Associate Behavior with Data
-
-**Objective:** Understand that data and the operations that manipulate it often belong together.
-
-**In practice:** Loyalty-related rules move inside `Customer`, instead of being scattered throughout `main`.
-
----
-
-### 2. Understand `impl` Blocks
-
-**Objective:** Learn how Rust associates methods with custom types.
-
-**In practice:** The `impl Customer` block becomes the place where customer-specific behaviors are defined.
-
----
-
-### 3. Differentiate `&self` and `&mut self`
-
-**Objective:** Recognize the distinction between reading and modifying an entity.
-
-**In practice:**
-
-* `&self` is used for methods that inspect data;
-* `&mut self` is used for methods that change the customer's state.
-
----
-
-### 4. Strengthen Domain Modeling
-
-**Objective:** Move beyond viewing structs as simple containers.
-
-**In practice:** A customer no longer merely stores loyalty points. A customer earns points, redeems rewards, and presents their own information.
-
----
-
-## Evolution of Exercise 01
-
-The Borrow & Brew customer registration journey has gradually evolved from simple data manipulation into domain-oriented software design:
-
-* **Version 1.0:** Shadowing and basic data sanitization.
-* **Version 2.0:** Functions, code reuse, and smart capitalization.
-* **Version 3.0:** Reliability through `Result`, `Option`, and validation pipelines.
-* **Version 4.0:** Domain Modeling with `struct`, transforming data into entities.
-* **Version 5.0:** Behavior with `impl`, transforming entities into active participants of the business.
-
-The system no longer asks only:
-
-> "What data does a customer have?"
-
-It now asks:
-
-> "What can a customer do?"

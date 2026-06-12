@@ -62,7 +62,7 @@ After processing the raw input using the sanitization and validation functions d
 
 ## Mandatory Steps
 
-Create the file (or modify your existing file if you prefer) and follow this implementation order:
+To solve this problem, you must follow this implementation order in your `main.rs` file:
 
 ### Step 1:
 
@@ -179,50 +179,3 @@ The final terminal output should present customers as organized records, ready t
 ## Learning Goals
 
 The objectives of Exercise 01 — Version 4.0 focus on transitioning from isolated data manipulation to intentional software design.
-
-They are divided into four main pillars:
-
-### 1. Introduce Domain Modeling
-
-**Objective:** Learn to think about software in terms of business entities instead of disconnected variables.
-
-**In practice:** A customer becomes a first-class concept represented by a dedicated Rust type.
-
----
-
-### 2. Organize Related Data
-
-**Objective:** Group characteristics that belong together under a single structure.
-
-**In practice:** Instead of managing separate variables for names, CPFs, telephones, and loyalty points, all customer information lives inside one `Customer` instance.
-
----
-
-### 3. Prepare the System for Growth
-
-**Objective:** Design software that can evolve as business requirements expand.
-
-**In practice:** Adding fields such as telephone numbers and loyalty points becomes a natural extension of the domain model rather than a disruptive change scattered throughout the codebase.
-
----
-
-### 4. Understand Structs as Building Blocks of Software Architecture
-
-**Objective:** Recognize that custom types are fundamental tools for creating expressive and maintainable systems.
-
-**In practice:** `struct` allows developers to model real-world concepts directly in code, improving readability, reducing complexity, and establishing a foundation for future features such as methods, modules, databases, and APIs.
-
----
-
-## Evolution of Exercise 01
-
-Throughout the Borrow & Brew journey, each version introduced a new layer of professional software development:
-
-* **Version 1.0:** Shadowing and basic data sanitization.
-* **Version 2.0:** Functions, code reuse, and smart capitalization.
-* **Version 3.0:** Reliability through `Result`, `Option`, and validation pipelines.
-* **Version 4.0:** Domain Modeling with `struct`, transforming validated data into meaningful business entities.
-
-The focus is no longer merely cleaning data or preventing failures.
-
-The system is now beginning to represent the business itself.

@@ -1,21 +1,17 @@
-// ---------------------------------------------------------
-// STEP 01: CPF SANITIZATION AND VALIDATION FUNCTION
-// ---------------------------------------------------------
+struct Customer {
+    name: String,
+    cpf: u64,
+    telephone: String,
+    loyalty_points: u32,
+}
+
 fn sanitize_and_validate_cpf(cpf: &str) -> Result<u64, String> {
-    // ---------------------------------------------------------
-    // STEP 02: PERFORM THE INITIAL SANITIZATION
-    // ---------------------------------------------------------
     let cleaned_cpf = cpf.replace(".", "").replace("-", "").replace(" ", "");
 
-    // ---------------------------------------------------------
-    // STEP 03: LENGTH VALIDATION
-    // ---------------------------------------------------------
     if cleaned_cpf.len() != 11 {
         return Err(String::from("Error: CPF must contain exactly 11 digits."));
     }
-    // ---------------------------------------------------------
-    // STEP 04: REPEATED SEQUENCE VALIDATION
-    // ---------------------------------------------------------
+
     if let Some(first_char) = cleaned_cpf.chars().next() {
         let repeated_sequence = first_char.to_string().repeat(11);
 
@@ -25,24 +21,13 @@ fn sanitize_and_validate_cpf(cpf: &str) -> Result<u64, String> {
             ));
         }
     }
-    // ---------------------------------------------------------
-    // STEP 05: SAFELY HANDLE NUMERIC CONVERSION
-    // ---------------------------------------------------------
+
     match cleaned_cpf.parse::<u64>() {
-        Ok(parsed_cpf) =>
-        // ---------------------------------------------------------
-        // STEP 06: SUCESS EMISSION
-        // ---------------------------------------------------------
-        {
-            Ok(parsed_cpf)
-        }
+        Ok(parsed_cpf) => Ok(parsed_cpf),
         Err(_) => Err(String::from("Error: CPF contains non-numeric characters.")),
     }
 }
 
-// ---------------------------------------------------------
-// SANITIZE NAME FUNCTION (VERSION 2.0)
-// ---------------------------------------------------------
 fn sanitize_name(name: &str) -> String {
     let name = name
         .trim()
@@ -63,53 +48,50 @@ fn sanitize_name(name: &str) -> String {
 }
 
 fn main() {
-    println!("=== BORROW & BREW CASHIER VALIDATION PANEL ===");
-    // ---------------------------------------------------------
-    // STEP 07: CASHIER CONTROL PANEL
-    // ---------------------------------------------------------
-    let test_cases = [
-        "123.456.789-09", // Case 1: Success
-        "123.456",        // Case 2: Invalid Length
-        "123.45a.789-00", // Case 3: Letters
-        "222.222.222-22", // Case 4: Repeated Sequence
-    ];
-    // ---------------------------------------------------------
-    // STEP 08: PROCESS EACH TEST CASE
-    // ---------------------------------------------------------
-    for (index, cpf_case) in test_cases.iter().enumerate() {
-        println!("\nProcessing Case {}:", index + 1);
-        println!("Input CPF: '{}'", cpf_case);
+    println!("=== BORROW & BREW — CUSTOMER REGISTRATION SYSTEM (v4.0) ===\n");
 
-        match sanitize_and_validate_cpf(cpf_case) {
-            Ok(cpf) => {
-                println!("✅ Success! Valid CPF registered: {}", cpf);
-            }
-            Err(error_message) => {
-                println!("❌ Cashier Alert -> {}", error_message);
-            }
+    let raw_name_maria = "  mArIa sIlVa  ";
+    let raw_cpf_maria = "123.456.789-00";
+
+    let sanitized_name_maria = sanitize_name(raw_name_maria);
+    let validated_cpf_maria = sanitize_and_validate_cpf(raw_cpf_maria);
+
+    let customer1 = match validated_cpf_maria {
+        Ok(cpf_num) => Some(Customer {
+            name: sanitized_name_maria,
+            cpf: cpf_num,
+            telephone: String::new(),
+            loyalty_points: 0,
+        }),
+        Err(err) => {
+            println!("❌ Critical failure while registering Maria Silva: {}", err);
+            None
         }
+    };
+
+    let customer2 = Customer {
+        name: String::from("Pedro Santos"),
+        cpf: 98765432101,
+        telephone: String::new(),
+        loyalty_points: 0,
+    };
+
+    println!("== CUSTOMER REGISTRY REPORT ===");
+
+    if let Some(c1) = customer1 {
         println!("--------------------------------------------------");
+        println!("Customer 1 (Dynamically Validated):");
+        println!("Name:           {}", c1.name);
+        println!("CPF:            {}", c1.cpf);
+        println!("Telephone:      {}", c1.telephone);
+        println!("Loyalty Points: {}", c1.loyalty_points);
     }
 
-    let customer_name = "  mArIa sIlVa  ";
-    let customer_cpf = "123.456.789-00";
-
-    println!("=== ORIGINAL DATA ===");
-    println!("Raw name: '{}'", customer_name);
-    println!("Raw CPF: '{}'", customer_cpf);
-
-    let sanitized_name = sanitize_name(customer_name);
-    let sanitized_cpf: Result<u64, String> = sanitize_and_validate_cpf(customer_cpf);
-
-    println!("\n=== CUSTOMER REGISTRATION DEMO ===");
-    println!("Final name: {}", sanitized_name);
-
-    match sanitized_cpf {
-        Ok(number) => {
-            println!("CPF accepted by current validation rules: {}", number);
-        }
-        Err(error) => {
-            println!("CPF rejected: {}", error);
-        }
-    }
+    println!("--------------------------------------------------");
+    println!("Customer 2 (Static):");
+    println!("Name:           {}", customer2.name);
+    println!("CPF:            {}", customer2.cpf);
+    println!("Telephone:      {}", customer2.telephone);
+    println!("Loyalty Points: {}", customer2.loyalty_points);
+    println!("--------------------------------------------------");
 }

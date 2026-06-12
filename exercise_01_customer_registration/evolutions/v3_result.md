@@ -45,7 +45,7 @@ To demonstrate that the system is now resilient against real-world failures, use
 
 ## Mandatory Steps
 
-Create the file (or modify your existing file if you prefer) and follow this implementation order:
+To solve this problem, you must follow this implementation order in your `main.rs` file:
 
 ### Step 1:
 
@@ -205,44 +205,3 @@ Most importantly, verify that none of these failures terminate the program unexp
 ## Learning Goals
 
 The objectives of Exercise 01 — Version 3.0 focus on introducing reliability and resilience into the Borrow & Brew system.
-
-They are divided into four main pillars:
-
-### 1. Replace Panics with Explicit Error Handling
-
-**Objective:** Understand that predictable failures should not abruptly terminate the application.
-
-**In practice:** Instead of using `.expect()`, errors become values represented by `Err(...)`, allowing the program to decide how to react.
-
----
-
-### 2. Build Multi-Layer Validation Pipelines
-
-**Objective:** Learn how to combine multiple validation rules to progressively protect the system against invalid input.
-
-**In practice:** The CPF must pass all filters before being accepted:
-
-* Correct length;
-* No repeated sequences;
-* Numeric-only content.
-
----
-
-### 3. Control Program Flow with `match`
-
-**Objective:** Use Rust's pattern matching capabilities to explicitly handle success and failure cases.
-
-**In practice:** The cashier interface behaves differently depending on whether validation returns `Ok(...)` or `Err(...)`.
-
----
-
-### 4. Introduce the `Option` and `Result` Mindset
-
-**Objective:** Understand Rust's philosophy that absence and failure are part of normal program execution.
-
-**In practice:**
-
-* `Option<T>` answers: *"Is there a value available?"*
-* `Result<T, E>` answers: *"Did this operation succeed or fail?"*
-
-Rather than hiding these possibilities behind exceptions, Rust forces developers to acknowledge them explicitly, leading to safer and more predictable software.

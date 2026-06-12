@@ -38,7 +38,7 @@ To maintain consistency with the previous exercise, use exactly the same initial
 
 ## Mandatory Steps
 
-Create the file (or modify your existing file if you prefer) and follow this implementation order:
+To solve this problem, you must follow this implementation order in your `main.rs` file:
 
 ### Step 1:
 Create the CPF Sanitization Function.
@@ -130,48 +130,3 @@ Validate that the final output shows:
 ## Learning Goals
 
 The objectives of Exercise 01 — Version 2.0 focus on transforming a linear, isolated program into a professional, organized, and scalable application capable of evolving alongside the Borrow & Brew system.
-
-They are divided into four main pillars:
-
-### 1. Introduce Code Reuse (DRY Principle)
-
-**Objective:** Avoid copying and pasting sanitization logic such as `.trim()`, `.replace()`, and `.parse()` whenever Ana registers a new customer or João needs to validate information in the kitchen.
-
-**In practice:** The logic is written once and can be reused as many times as necessary.
-
----
-
-### 2. Create Dedicated Functions (Modularization)
-
-**Objective:** Learn Rust's function syntax by clearly defining:
-
-* Input parameters: what the function needs in order to perform its task (for example, `&str`);
-* Return types: what the function provides after completing its work (for example, `String` or `u64`).
-
----
-
-### 3. Apply Separation of Responsibilities
-
-**Objective:** Isolate business rules so that `main` does not need to know how a CPF is sanitized—it only needs the result.
-
-Each function should have a single responsibility:
-
-* One function handles customer name processing (`sanitize_name`);
-* Another function handles CPF cleaning and conversion (`sanitize_cpf`).
-
----
-
-### 4. Perform Advanced String Manipulation (Smart Capitalization)
-
-**Objective:** Go beyond basic String methods and learn how to transform data algorithmically.
-
-The technical challenge is to process the String, separate its words, manipulate specific characters at runtime, and transform:
-
-
-`maria silva`
-
-
-into:
-
-
-`Maria Silva`
