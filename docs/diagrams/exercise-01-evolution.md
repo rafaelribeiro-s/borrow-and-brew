@@ -14,7 +14,6 @@ impl
 Customer Entity
 ```
 
-````
 
 Or, in business terms:
 
@@ -30,4 +29,4 @@ Domain Modeling
 Behavior
  ↓
 Complete Customer Entity
-````
+```
