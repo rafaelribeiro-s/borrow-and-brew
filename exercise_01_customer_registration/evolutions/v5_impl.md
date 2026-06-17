@@ -203,7 +203,7 @@ Inside `main`, create Maria Silva using the `Customer` struct.
 Initialize:
 
 * Name: `"Maria Silva"`
-* CPF: `12345678909`
+* CPF: `12345678900`
 * Telephone: `String::new()`
 * Loyalty Points: `0`
 
